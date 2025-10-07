@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Our Memories 💑</title>
+  <style>
+    /* Dark gradient background for golden sparkle effect */
+    body {
+      background: linear-gradient(135deg, #2c1b0c, #1a1a1a);
+      position: relative;
+      overflow-x: hidden;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      color: #e91e63;
+      font-size: 2.8em;
+      margin-bottom: 40px;
+      text-shadow: 0 0 10px #575556;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 50px;
+      padding: 20px;
+    }
+
+    .photo-frame {
+      position: relative;
+      width: 220px;
+      height: auto;
+      margin-top: 60px;
+      animation: swing 3s infinite ease-in-out;
+      transform-origin: top center;
+      cursor: pointer;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+      background: rgba(255, 223, 0, 0.1);
+      transition: box-shadow 0.3s;
+    }
+    .photo-frame:hover {
+      box-shadow: 0 0 25px 5px rgba(255, 215, 0, 0.9);
+    }
+
+    /* Hanging string */
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 60px;
+      background: #b8860b;
+      filter: drop-shadow(0 0 2px #ffd700);
+      border-radius: 1px;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: block;
+    }
+
+    .photo-frame:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(255, 215, 0, 0.8);
+    }
+
+    /* Memory description on hover */
+    .memory-text {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(87, 86, 88, 0.861);
+      color: rgb(244, 241, 242);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.9em;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 0 10px rgb(239, 226, 44);
+    }
+
+    .photo-frame:hover .memory-text {
+      opacity: 1;
+    }
+
+    @keyframes swing {
+      0% { transform: rotate(1deg); }
+      50% { transform: rotate(-1.5deg); }
+      100% { transform: rotate(1deg); }
+    }
+
+    .back-btn {
+      margin-top: 50px;
+      padding: 12px 24px;
+      font-size: 1em;
+      background-color: #f30a99;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #f1d208;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #e4c811;
+      box-shadow: 0 0 25px #f7ce04;
+    }
+
+    @media (max-width: 600px) {
+      .photo-frame {
+        width: 80%;
+      }
+    }
+
+    /* Golden glitter sparkles container */
+    .glitter-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    /* Single glitter dot */
+    .glitter-dot {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffd700, #b8860b);
+      opacity: 0;
+      animation-name: twinkle;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+
+    /* Flicker animation */
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Our Memories Together 📸</h1>
+
+  <div class="gallery">
+    <div class="photo-frame">
+      <img src="E:/sansbday/sg1.jpg" alt="Memory 1" />
+      <div class="memory-text">“The time when we completed our semester lab and hit couple poses 💕”</div>
+    </div>
+
+    <div class="photo-frame">
+      <img src="E:/sansbday/sg5.jpg" alt="Memory 2" />
+      <div class="memory-text">"Planned twinning heheee 💖"</div>
+    </div>
+
+    <div class="photo-frame">
+      <img src="E:/sansbday/sg2.jpg" alt="Memory 3" />
+      <div class="memory-text">"That first time we sat together before Food Jack — just us, the table, and endless clicks 🥹❤️📸"</div>
+    </div>
+
+    <div class="photo-frame">
+      <img src="E:/sansbday/sg3.jpg" alt="Memory 4" />
+      <div class="memory-text">"The very first time we went for the JEE exam with my mother 💙🌿"</div>
+    </div>
+
+    <div class="photo-frame">
+      <img src="E:/sansbday/sg6.jpg" alt="Memory 5" />
+      <div class="memory-text">"Just us 🌇"</div>
+    </div>
+  </div>
+
+  <button class="back-btn" onclick="goBack()">Step into the Polaroid Room</button>
+
+  <script>
+    function goBack() {
+      window.location.href = "poloroideg.html";
+    }
+
+    // Create glitter dots dynamically
+    const glitterContainer = document.createElement('div');
+    glitterContainer.classList.add('glitter-container');
+    document.body.appendChild(glitterContainer);
+
+    const numDots = 100; // Number of glitter dots
+
+    for(let i = 0; i < numDots; i++) {
+      const dot = document.createElement('div');
+      dot.classList.add('glitter-dot');
+
+      // Random position within viewport
+      dot.style.top = Math.random() * 100 + 'vh';
+      dot.style.left = Math.random() * 100 + 'vw';
+
+      // Random animation duration between 1s and 4s
+      dot.style.animationDuration = (1 + Math.random() * 3) + 's';
+
+      // Random animation delay so they don't all twinkle at once
+      dot.style.animationDelay = (Math.random() * 5) + 's';
+
+      glitterContainer.appendChild(dot);
+    }
+  </script>
+
+</body>
+</html>
